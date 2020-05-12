@@ -3,15 +3,19 @@
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="utf-8">
   
-  <title>Hexo</title>
+  <title>有自己的名字啦！ | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="今天在namesilo上买了个域名，重新捡起被遗忘在角落的博客。搁置一年多，几乎忘记了咋操作。具体的可以参考这篇文章。对于域名，DNS解析等词汇还是有些蒙蔽，从输入网址到出现页面经历了什么？打算看这本书，《网络是怎样连接的》了解下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="有自己的名字啦！">
+<meta property="og:url" content="http://yoursite.com/2020/05/12/有自己的名字啦/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="今天在namesilo上买了个域名，重新捡起被遗忘在角落的博客。搁置一年多，几乎忘记了咋操作。具体的可以参考这篇文章。对于域名，DNS解析等词汇还是有些蒙蔽，从输入网址到出现页面经历了什么？打算看这本书，《网络是怎样连接的》了解下。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-12T16:36:08.086Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="有自己的名字啦！">
+<meta name="twitter:description" content="今天在namesilo上买了个域名，重新捡起被遗忘在角落的博客。搁置一年多，几乎忘记了咋操作。具体的可以参考这篇文章。对于域名，DNS解析等词汇还是有些蒙蔽，从输入网址到出现页面经历了什么？打算看这本书，《网络是怎样连接的》了解下。">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -64,9 +68,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-有自己的名字啦" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-有自己的名字啦" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/12/有自己的名字啦/" class="article-date">
   <time datetime="2020-05-12T15:56:07.000Z" itemprop="datePublished">2020-05-12</time>
@@ -79,8 +81,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/有自己的名字啦/">有自己的名字啦！</a>
+    <h1 class="article-title" itemprop="name">
+      有自己的名字啦！
     </h1>
   
 
@@ -102,135 +104,74 @@
     </footer>
   </div>
   
-</article>
- 
-
-
-  
-    <article id="post-test" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/07/test/" class="article-date">
-  <time datetime="2019-03-07T13:53:35.000Z" itemprop="datePublished">2019-03-07</time>
-</a>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/07/test/">你好</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <blockquote>
-<p>如果你觉得一件事很重要，那就让它实现</p>
-</blockquote>
-<p><strong>我不知道这个博客会坚持多久,这是第一篇文章，也可能是最后一篇文章。</strong></p>
-
-      
+ <script src="/jquery/jquery.min.js"></script>
+  <div id="random_posts">
+    <h2>推荐文章</h2>
+    <div class="random_posts_ul">
+      <script>
+          var random_count =4
+          var site = {BASE_URI:'/'};
+          function load_random_posts(obj) {
+              var arr=site.posts;
+              if (!obj) return;
+              // var count = $(obj).attr('data-count') || 6;
+              for (var i, tmp, n = arr.length; n; i = Math.floor(Math.random() * n), tmp = arr[--n], arr[n] = arr[i], arr[i] = tmp);
+              arr = arr.slice(0, random_count);
+              var html = '<ul>';
+            
+              for(var j=0;j<arr.length;j++){
+                var item=arr[j];
+                html += '<li><strong>' + 
+                item.date + ':&nbsp;&nbsp;<a href="' + (site.BASE_URI+item.uri) + '">' + 
+                (item.title || item.uri) + '</a></strong>';
+                if(item.excerpt){
+                  html +='<div class="post-excerpt">'+item.excerpt+'</div>';
+                }
+                html +='</li>';
+                
+              }
+              $(obj).html(html + '</ul>');
+          }
+          $('.random_posts_ul').each(function () {
+              var c = this;
+              if (!site.posts || !site.posts.length){
+                  $.getJSON(site.BASE_URI + 'js/posts.js',function(json){site.posts = json;load_random_posts(c)});
+              } 
+               else{
+                load_random_posts(c);
+              }
+          });
+      </script>
     </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/07/test/" data-id="cka44z7wd000248uez1e8mi6f" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
   </div>
+
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/03/07/test/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">你好</div>
+    </a>
+  
+</nav>
+
   
 </article>
  
-
-
-  
-    <article id="post-World" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/07/World/" class="article-date">
-  <time datetime="2019-03-07T13:50:44.000Z" itemprop="datePublished">2019-03-07</time>
-</a>
+     
+  <div class="comments" id="comments">
     
+     
+       
+      <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+    
+       
+      
+      
   </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/07/World/">World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        <p>***这是一个测试文件</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/07/World/" data-id="cka44z7w9000148ueoljjerme" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
  
-
-
-  
-    <article id="post-Hello-World-0" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/03/07/Hello-World-0/" class="article-date">
-  <time datetime="2019-03-07T13:09:00.000Z" itemprop="datePublished">2019-03-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/07/Hello-World-0/">Hello World!</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <!-- Table of Contents -->
-        
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/03/07/Hello-World-0/" data-id="cka44z7vt000048ue4w4ts8bu" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
- 
-
-
   
 
 </section>
@@ -238,26 +179,6 @@
     <aside id="sidebar">
   
     
-  <div class="widget-wrap">
-     
-        <h3 class="follow-title ">Follow me</h3>
-     
-    <div class="widget follow">
-      
-              <a class="github" aria-hidden="true" href="https://github.com/giscafer" target="_blank" title="Github"></a>
-      
-      
-            <a class="weibo" aria-hidden="true" href="http://weibo.com/laohoubin" target="_blank" title="微博"></a>
-      
-      
-              <a class="zhihu" aria-hidden="true" href="http://www.zhihu.com/people/giscafer" target="_blank" title="知乎"></a>
-      
-      
-            <a class="email" aria-hidden="true" href="mailto:youemail@outlook.com" target="_blank" title="邮箱"></a>
-      
-    </div>
-  </div>
-
 
   
     
@@ -295,42 +216,11 @@
 
   
     
-  <div class="widget-wrap">
-    <h3 class="widget-title archive">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">March 2019</a><span class="archive-list-count">3</span></li></ul>
-    </div>
-  </div>
-
 
   
     
-<div class="widget-wrap">
-    <h3 class="widget-title">Links</h3>
-    <div class="widget">
-        <ul>
-            
-            <li>
-                <a href="http://blog.giscafer.com">giscafer&#39;s blog</a>
-            </li>
-            
-            <li>
-                <a href="http://www.gis520.com">GIS520社区</a>
-            </li>
-            
-        </ul>
-    </div>
-</div>
-
   
     <!--微信公众号二维码-->
-
-  <div class="widget-wrap">
-    <h3 class="follow-title ">WeChat</h3>
-    <div class="widget wechat-widget">
-        <img src="http://blog.giscafer.com/static/images/qrcode_giscafer.jpg" alt="扫码关注" width="250">
-    </div>
-  </div>
 
 
   
